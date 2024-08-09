@@ -1,85 +1,98 @@
 # Proyecto API y Web
 
-Este repositorio contiene una API RESTful y una aplicación web que interactúan entre sí. La API gestiona operaciones CRUD completas para usuarios, incluyendo el registro y el inicio de sesión. La aplicación web está construida con React y utiliza React Hook Form para gestionar formularios y la validación de datos.
+Este proyecto combina una API con un sistema completo de CRUD para usuarios y una aplicación web construida en React. La API gestiona el registro, inicio de sesión y administración de usuarios, mientras que la web permite interactuar con la API a través de un formulario que utiliza React Hook Form para la validación.
 
-## Estructura del Repositorio
+## Índice
 
-El repositorio está dividido en dos partes principales:
+- [Descripción](#descripción)
+- [Características](#características)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
 
-1. **API**: Implementa la lógica de negocio para la gestión de usuarios.
-2. **Web**: Aplicación frontend construida con React, que incluye un formulario para registrar y gestionar usuarios.
+## Descripción
 
-## Requisitos
+Este proyecto incluye dos componentes principales:
 
-- [Node.js](https://nodejs.org/) (versión 14 o superior)
-- [MongoDB](https://www.mongodb.com/) (para la base de datos)
-- [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/) (para la gestión de paquetes)
+1. **API**: Una API RESTful que ofrece operaciones CRUD completas para la gestión de usuarios, incluyendo registro, inicio de sesión, actualización y eliminación. La API está conectada a una base de datos MongoDB.
+2. **Web**: Una aplicación web construida con React que incluye un formulario para registrar nuevos usuarios. Utiliza `React Hook Form` para manejar la validación de los datos del formulario y se comunica con la API para crear usuarios en la base de datos.
 
-## Instalación y Configuración
+## Características
 
-### 1. Configuración de la API
+- **API**:
+  - Registro de usuarios.
+  - Inicio de sesión de usuarios.
+  - Actualización y eliminación de usuarios.
+  - Conexión a una base de datos MongoDB.
 
-1. Navega al directorio de la API:
-   ```bash
-   cd api
-Instala las dependencias:
+- **Web**:
+  - Formulario de registro de usuarios con validación.
+  - Manejo de errores de entrada de datos.
+  - Interacción con la API para crear usuarios.
 
-bash
-Copiar código
-npm install
-Configura las variables de entorno:
-Crea un archivo .env en el directorio de la API con las siguientes variables:
+## Instalación
 
-env
-Copiar código
-MONGO_URI=mongodb://localhost:27017/tu_base_de_datos
-PORT=5000
-Inicia el servidor de la API:
+### Requisitos Previos
 
-bash
-Copiar código
-npm start
-2. Configuración de la Aplicación Web
-Navega al directorio de la aplicación web:
+- Node.js y npm instalados.
+- MongoDB en funcionamiento.
 
-bash
-Copiar código
-cd web
-Instala las dependencias:
+### Instalación de la API
 
-bash
-Copiar código
-npm install
-Configura las variables de entorno:
-Crea un archivo .env en el directorio de la aplicación web con la siguiente variable:
+1. Clonar el repositorio:
+    ```bash
+    git clone https://github.com/tu-usuario/tu-repo.git
+    ```
+2. Navegar al directorio de la API:
+    ```bash
+    cd tu-repo/api
+    ```
+3. Instalar dependencias:
+    ```bash
+    npm install
+    ```
+4. Configurar las variables de entorno. Crea un archivo `.env` en el directorio raíz de la API y añade las variables necesarias, como la URI de MongoDB.
 
-env
-Copiar código
-REACT_APP_API_URL=http://localhost:5000
-Inicia la aplicación web:
+5. Iniciar el servidor de la API:
+    ```bash
+    npm start
+    ```
 
-bash
-Copiar código
-npm start
-Rutas de la API
-Aquí están las rutas disponibles en la API:
+### Instalación de la Web
 
-1. Registro de Usuario
-Método: POST
-Ruta: /user
-Descripción: Registra un nuevo usuario.
-2. Obtener Perfil de Usuario
-Método: GET
-Ruta: /profile
-Descripción: Obtiene el perfil del usuario autenticado.
-Middleware: authMiddleware.checkAuth (Requiere autenticación)
-3. Inicio de Sesión
-Método: POST
-Ruta: /login
-Descripción: Inicia sesión de un usuario.
-4. Actualizar Perfil de Usuario
-Método: PATCH
-Ruta: /profile
-Descripción: Actualiza el perfil del usuario autenticado.
-**
+1. Navegar al directorio de la web:
+    ```bash
+    cd ../web
+    ```
+2. Instalar dependencias:
+    ```bash
+    npm install
+    ```
+3. Iniciar el servidor de desarrollo:
+    ```bash
+    npm start
+    ```
+
+## Uso
+
+### API
+
+- **Registro de Usuario**:
+  - `POST /api/users/register`
+  - Cuerpo de la solicitud: `{ "username": "user", "password": "pass" }`
+
+- **Inicio de Sesión**:
+  - `POST /api/users/login`
+  - Cuerpo de la solicitud: `{ "username": "user", "password": "pass" }`
+
+### Web
+
+1. Abre tu navegador y ve a `http://localhost:3000`.
+2. Usa el formulario de registro para crear nuevos usuarios. Los errores en los datos se mostrarán en el formulario si los datos ingresados son incorrectos.
+
+## Estructura del Proyecto
+
+
    
