@@ -1,3 +1,7 @@
+
+
+
+   
 # Proyecto API y Web
 
 Este proyecto combina una API con un sistema completo de CRUD para usuarios y una aplicación web construida en React. La API gestiona el registro, inicio de sesión y administración de usuarios, mientras que la web permite interactuar con la API a través de un formulario que utiliza React Hook Form para la validación.
@@ -9,6 +13,8 @@ Este proyecto combina una API con un sistema completo de CRUD para usuarios y un
 - [Instalación](#instalación)
 - [Uso](#uso)
 - [Estructura del Proyecto](#estructura-del-proyecto)
+- [Rutas de la API](#rutas-de-la-api)
+- [Componente de Registro](#componente-de-registro)
 - [Contribuciones](#contribuciones)
 - [Licencia](#licencia)
 
@@ -16,8 +22,8 @@ Este proyecto combina una API con un sistema completo de CRUD para usuarios y un
 
 Este proyecto incluye dos componentes principales:
 
-1. **API**: Una API RESTful que ofrece operaciones CRUD completas para la gestión de usuarios, incluyendo registro, inicio de sesión, actualización y eliminación. La API está conectada a una base de datos MongoDB.
-2. **Web**: Una aplicación web construida con React que incluye un formulario para registrar nuevos usuarios. Utiliza `React Hook Form` para manejar la validación de los datos del formulario y se comunica con la API para crear usuarios en la base de datos.
+1. **API**: Una API RESTful para la gestión de usuarios, que incluye registro, inicio de sesión, actualización y eliminación. Utiliza una base de datos MongoDB y tiene autenticación protegida para ciertas rutas.
+2. **Web**: Una aplicación web construida con React que incluye un formulario de registro de usuarios. Utiliza `React Hook Form` para la validación de datos y se comunica con la API para crear usuarios.
 
 ## Características
 
@@ -25,6 +31,7 @@ Este proyecto incluye dos componentes principales:
   - Registro de usuarios.
   - Inicio de sesión de usuarios.
   - Actualización y eliminación de usuarios.
+  - Protección de rutas mediante autenticación.
   - Conexión a una base de datos MongoDB.
 
 - **Web**:
@@ -79,20 +86,65 @@ Este proyecto incluye dos componentes principales:
 
 ### API
 
+La API proporciona las siguientes rutas:
+
 - **Registro de Usuario**:
-  - `POST /api/users/register`
-  - Cuerpo de la solicitud: `{ "username": "user", "password": "pass" }`
+  - `POST /api/user`
+  - Cuerpo de la solicitud: `{ "email": "user@example.com", "password": "pass1234" }`
 
 - **Inicio de Sesión**:
-  - `POST /api/users/login`
-  - Cuerpo de la solicitud: `{ "username": "user", "password": "pass" }`
+  - `POST /api/login`
+  - Cuerpo de la solicitud: `{ "email": "user@example.com", "password": "pass1234" }`
+
+- **Obtener Perfil**:
+  - `GET /api/profile`
+  - Requiere autenticación.
+
+- **Actualizar Perfil**:
+  - `PATCH /api/profile`
+  - Requiere autenticación.
+  - Cuerpo de la solicitud: `{ "email": "newemail@example.com", "password": "newpass1234" }`
+
+- **Eliminar Usuario**:
+  - `DELETE /api/user`
+  - Requiere autenticación.
 
 ### Web
 
 1. Abre tu navegador y ve a `http://localhost:3000`.
 2. Usa el formulario de registro para crear nuevos usuarios. Los errores en los datos se mostrarán en el formulario si los datos ingresados son incorrectos.
 
-## Estructura del Proyecto
+
+## Rutas de la API
+
+Las rutas de la API están definidas en `api/routes/user.routes.js` y gestionan las siguientes operaciones:
+
+- `POST /api/user`: Crea un nuevo usuario.
+- `GET /api/profile`: Obtiene el perfil del usuario autenticado.
+- `POST /api/login`: Inicia sesión con las credenciales del usuario.
+- `PATCH /api/profile`: Actualiza el perfil del usuario autenticado.
+- `DELETE /api/user`: Elimina el usuario autenticado.
+
+La autenticación se maneja mediante middleware en `api/middlewares/auth.middleware.js`, que protege las rutas que requieren autenticación.
+
+## Componente de Registro
+
+El componente de registro en React está definido en `web/src/components/RegisterForm.js` y utiliza `React Hook Form` para gestionar y validar el formulario de registro.
 
 
-   
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Agradecimientos
+
+Gracias a todos los contribuyentes y desarrolladores que han ayudado a hacer posible este proyecto. Si encuentras algún error o tienes sugerencias de mejora, no dudes en abrir un issue en el repositorio.
+
+## Contacto
+
+Para cualquier pregunta o comentario, puedes contactar con el mantenedor del proyecto en [marcosalvarezcalabria@gmail.com](mailto:marcosalvarezcalabria@gmail.com) o a través de (https://github.com/marcosAlvarezCalabria).
+
+
+
+
